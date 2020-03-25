@@ -6,11 +6,13 @@ using AutoMapper;
 using DatingApp.API.Data.Dtos.Users;
 using DatingApp.API.Data.Repository.General;
 using DatingApp.API.Data.Repository.Users;
+using DatingApp.API.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DatingApp.API.Controllers
 {
+    [ServiceFilter(typeof(LogUserActivity))]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
