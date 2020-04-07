@@ -9,6 +9,7 @@ using DatingApp.API.Data;
 using DatingApp.API.Data.Repository.Auth;
 using DatingApp.API.Data.Repository.General;
 using DatingApp.API.Data.Repository.Likes;
+using DatingApp.API.Data.Repository.Messages;
 using DatingApp.API.Data.Repository.Photos;
 using DatingApp.API.Data.Repository.Users;
 using DatingApp.API.Helpers;
@@ -54,6 +55,7 @@ namespace DatingApp.API
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IPhotoRepository, PhotoRepository>();
             services.AddScoped<ILikeRepository, LikeRepository>();
+            services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options => {
                     options.TokenValidationParameters = new TokenValidationParameters {
