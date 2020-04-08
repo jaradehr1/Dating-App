@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './_services/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router, Event, NavigationStart, NavigationEnd, NavigationError, NavigationCancel } from '@angular/router';
 import { User } from './_models/user';
 
 @Component({
@@ -11,8 +12,13 @@ import { User } from './_models/user';
 export class AppComponent implements OnInit {
   title = 'DatingApp-SPA';
   jwtHelper = new JwtHelperService();
+  loading = true;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router,) {
+    router.events.subscribe((routerEvent: Event) => {
+      this.checkRouterEvent(routerEvent);
+    });
+  }
 
   ngOnInit() {
     const token = localStorage.getItem('token');
@@ -23,6 +29,18 @@ export class AppComponent implements OnInit {
     if (user) {
       this.authService.currentUser = user;
       this.authService.changeMemeberPhoto(user.photoUrl);
+    }
+  }
+
+  checkRouterEvent(routerEvent: Event): void {
+    if (routerEvent instanceof NavigationStart) {
+      this.loading = true;
+    }
+
+    if (routerEvent instanceof NavigationEnd ||
+    routerEvent instanceof NavigationCancel ||
+    routerEvent instanceof NavigationError) {
+      this.loading = false;
     }
   }
 }

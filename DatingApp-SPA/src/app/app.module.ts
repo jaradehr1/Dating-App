@@ -13,6 +13,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { FileUploadModule } from 'ng2-file-upload';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { TimeAgoPipe } from 'time-ago-pipe';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -70,6 +71,7 @@ export class CustomHammerConfig extends HammerGestureConfig  {
       BrowserModule,
       HttpClientModule,
       FormsModule,
+      CollapseModule.forRoot(),
       ReactiveFormsModule,
       BrowserAnimationsModule,
       BsDatepickerModule.forRoot(),

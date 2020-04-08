@@ -2,16 +2,18 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { AlertifyService } from '../_services/alertify.service';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css']
+  styleUrls: ['./nav.component.css'],
+  providers: [{ provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } }]
 })
 export class NavComponent implements OnInit {
   model: any = {};
   photoUrl: string;
+  isCollapsed = false;
 
   constructor(
       public authService: AuthService,
