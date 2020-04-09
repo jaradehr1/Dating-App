@@ -46,6 +46,7 @@
             autocomplete="off"
             name="username"
             type="text"
+            style="margin-top: inherit;"
             placeholder="Username"
             required
             [(ngModel)]="model.username">
@@ -61,6 +62,7 @@
           <button
             class="btn btn-success my-2 my-sm-0"
             [disabled]="!loginForm.valid"
+            style="margin-top: inherit;"
             type="submit">Login
           </button>
       </form>

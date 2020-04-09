@@ -10,10 +10,12 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
   styleUrls: ['./nav.component.css'],
   providers: [{ provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } }]
 })
+
 export class NavComponent implements OnInit {
   model: any = {};
   photoUrl: string;
   isCollapsed = false;
+
 
   constructor(
       public authService: AuthService,
@@ -44,7 +46,7 @@ export class NavComponent implements OnInit {
     localStorage.removeItem('user');
     this.authService.decodedToken = null;
     this.authService.currentUser = null;
-    this.alertify.message('logged out');
+    this.alertify.message('logged out!');
     this.router.navigate(['/home']);
   }
 }
